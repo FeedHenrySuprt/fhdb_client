@@ -12,7 +12,7 @@ $fh.ready(function() {
 
   $fh.cloud(
     {
-      path:'cloud/list'
+      path:'list'
     },
     function(res) {
       document.getElementById('Results').innerHTML = JSON.stringify(res);
@@ -22,8 +22,6 @@ $fh.ready(function() {
       document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
     }
   );
-
-
 };
 
   document.getElementById('deleteall_button').onclick = function() {
