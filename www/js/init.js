@@ -9,84 +9,91 @@ call which will return the remote config.
 $fh.ready(function() {
   // Device is ready.
   document.getElementById('list_button').onclick = function() {
-
+  // List all entries.
   $fh.cloud(
     {
-      path:'list'
+      path:'fhdb/list'
     },
     function(res) {
+      // Success
       document.getElementById('Results').innerHTML = JSON.stringify(res);
     },
     function(code,errorprops,params) {
+      // Error
       console.log('An error occured: ' + code + ' : ' + errorprops.error);
       document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
     }
   );
-};
+  };
 
   document.getElementById('deleteall_button').onclick = function() {
-
+  // Wipe all entries.
   $fh.cloud(
     {
-      path:'cloud/deleteall'
+      path:'fhdb/deleteall'
+    },
+    function(res) {
+      // Success
+      document.getElementById('Results').innerHTML = JSON.stringify(res);
+    },
+    function(code,errorprops,params) {
+      // Error
+      console.log('An error occured: ' + code + ' : ' + errorprops.error);
+      document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
+    }
+  );
+  };
+
+  document.getElementById('list_smith_button').onclick = function() {
+  // List all entries for "Mr Smith"
+  $fh.cloud(
+    {
+      path:'fhdb/listLastName'
     },
     function(res) {
       document.getElementById('Results').innerHTML = JSON.stringify(res);
     },
     function(code,errorprops,params) {
+      // Error
       console.log('An error occured: ' + code + ' : ' + errorprops.error);
       document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
     }
   );
-};
+  };
 
-  document.getElementById('list_lastname_button').onclick = function() {
-
+  document.getElementById('addjones_button').onclick = function() {
+  // Add Jones entry.
   $fh.cloud(
     {
-      path:'cloud/listLastName'
+      path:'fhdb/addMrJones'
     },
     function(res) {
+      // Success
       document.getElementById('Results').innerHTML = JSON.stringify(res);
     },
     function(code,errorprops,params) {
+      // Error
       console.log('An error occured: ' + code + ' : ' + errorprops.error);
       document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
     }
   );
-};
+  };
 
-
-  document.getElementById('addjim_button').onclick = function() {
-
+  document.getElementById('addsmith_button').onclick = function() {
+  // Add Smith entry.
   $fh.cloud(
     {
-      path:'cloud/addMrJones'
+      path:'fhdb/addMrSmith'
     },
     function(res) {
+      // Success
       document.getElementById('Results').innerHTML = JSON.stringify(res);
     },
     function(code,errorprops,params) {
+      // Error
       console.log('An error occured: ' + code + ' : ' + errorprops.error);
       document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
     }
   );
-};
-
-  document.getElementById('addjack_button').onclick = function() {
-
-  $fh.cloud(
-    {
-      path:'cloud/addMrSmith'
-    },
-    function(res) {
-      document.getElementById('Results').innerHTML = JSON.stringify(res);
-    },
-    function(code,errorprops,params) {
-      console.log('An error occured: ' + code + ' : ' + errorprops.error);
-      document.getElementById('Results').innerHTML = 'An error occured: ' + code + ' : ' + errorprops.error;
-    }
-  );
-};
-
+  };
 });
